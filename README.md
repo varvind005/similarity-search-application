@@ -31,7 +31,16 @@ Resource 2: https://huggingface.co/learn/nlp-course/chapter5/6?fw=tf
 # Steps to run the Docker image from docker hub on your local laptop correctly
 Once I pushed my docker image to docker hub I tried pulling the image and running it on a separate device and I ran into a couple of errors which is why I am writing this section on how to correctly pull the image and run the right commands in order for it to work successfully on your local device.
 
-First, pull the image from the docker hub url provided with the following command: docker pull arvindveerelli/similarity-search-application-ui
+First, pull the image from the docker hub url provided with the following command: '''docker pull arvindveerelli/similarity-search-application-ui'''
 Next, once you have the docker image on you device run this command in order to run both the starlit and FastAPI application on the right ports:
-docker run -p 8000:8000 -p 8501:8501 arvindveerelli/similarity-search-application-ui:latest
+'''docker run -p 8000:8000 -p 8501:8501 arvindveerelli/similarity-search-application-ui:latest'''
 Running this command seems to solve the issue where docker randomly assigns the wrong port to the application which internally are expecting to be ran on different ports.
+
+# Steps to run the application locally
+I will put the terminal commands that are required to run the entire application on the right ports in order to prevent any errors that might arise. First run this command in the terminal to start the uvicorn application on the right port:
+'''uvicorn app:app --reload --host 127.0.0.1 --port 8000'''
+Next, run this command to run the streamlit application on the right port:
+'''streamlit run streamlit_app.py --server.port 8501 --server.address 127.0.0.1'''
+
+
+
