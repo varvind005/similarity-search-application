@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: similarity-service-application
+  name: arvindveerelli/similarity-search-application-ui
 spec:
   selector:
-    app: similarity-service-application
+    app: arvindveerelli/similarity-search-application-ui
   ports:
     - protocol: TCP
       port: 80
